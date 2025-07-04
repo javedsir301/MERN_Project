@@ -6,16 +6,23 @@ const FormDataModel = require('./models/FormData');
 
 const app = express();
 
-const allowedOrigins = ['https://mern-project-gamma-nine.vercel.app'];
+const allowedOrigins = [
+  'https://mern-project-javedsir301s-projects.vercel.app',
+  'https://mern-project-gamma-nine.vercel.app'
+];
+
 app.use(cors({
   origin: function (origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
+      console.log(`Blocked by CORS: ${origin}`);
       callback(new Error('Not allowed by CORS'));
     }
   },
-  credentials: true
+  credentials: true,
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type']
 }));
 
 
