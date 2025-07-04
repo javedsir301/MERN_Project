@@ -10,7 +10,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('https://mern-backend-deploy.onrender.com/login', { email, password })
+    axios.post('https://mern-backend-deploy.onrender.com/login', { email, password }, {withCredentials: true})
     .then(result => {
         const { message, role } = result.data;
 
